@@ -205,3 +205,6 @@ Thumbs.db
 # Logs
 logs/
 *.log
+.kiro/
+.claude/
+CLAUDE.MD
