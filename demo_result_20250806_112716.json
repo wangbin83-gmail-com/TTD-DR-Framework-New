@@ -1,0 +1,104 @@
+{
+  "topic": "Python异步编程最佳实践2025",
+  "stage1_planning": {
+    "topic": "Python异步编程最佳实践2025",
+    "structure": [
+      "1. 异步编程基础概念",
+      "2. Python asyncio核心机制",
+      "3. 最佳实践模式",
+      "4. 性能优化技巧",
+      "5. 实际应用案例"
+    ],
+    "research_questions": [
+      "Python asyncio best practices 2025",
+      "Python async await patterns",
+      "Python concurrent programming tutorial"
+    ]
+  },
+  "stage2_search_synthesis": {
+    "total_queries": 3,
+    "total_sources": 9,
+    "search_results": [
+      {
+        "title": "Why Is My asyncio Script with aiohttp Hanging on Concurrent URL ...",
+        "url": "https://discuss.python.org/t/why-is-my-asyncio-script-with-aiohttp-hanging-on-concurrent-url-fetches/97977",
+        "snippet": "Jul 7, 2025 ... Tested with fewer URLs —still hangs. Reviewed Python's asyncio docs asyncio — Asynch..."
+      },
+      {
+        "title": "Python's asyncio: A Hands-On Walkthrough – Real Python",
+        "url": "https://realpython.com/async-io-python/",
+        "snippet": "6 days ago ... In this tutorial, you'll learn how Python asyncio works, how to define and run corout..."
+      },
+      {
+        "title": "Do await and async have advantages besides running functions ...",
+        "url": "https://discuss.python.org/t/do-await-and-async-have-advantages-besides-running-functions-asynchronously/81579",
+        "snippet": "Feb 21, 2025 ... That right there is the function colouring problem. 1 Like. onePythonUser (Paul) Fe..."
+      },
+      {
+        "title": "Python's asyncio: A Hands-On Walkthrough – Real Python",
+        "url": "https://realpython.com/async-io-python/",
+        "snippet": "6 days ago ... Python's asyncio library enables you to write concurrent code using the async and awa..."
+      },
+      {
+        "title": "Playground Wisdom: Threads Beat Async/Await | Armin Ronacher's ...",
+        "url": "https://lucumr.pocoo.org/2024/11/18/threads-beat-async-await/",
+        "snippet": "Nov 18, 2024 ... If you were to foray into programming via a traditional book on Python, C# or some ..."
+      },
+      {
+        "title": "/asynchronous-javascript-promises-async-await-patterns ...",
+        "url": "https://javascript.plainenglish.io/mastering-asynchronous-javascript-like-a-senior-engineer-d1288f8c5fef",
+        "snippet": "4 hours ago ... 9 Powerful Async Patterns in Python That Supercharge Your Workflow ... 7 Programming..."
+      },
+      {
+        "title": "Python's asyncio: A Hands-On Walkthrough – Real Python",
+        "url": "https://realpython.com/async-io-python/",
+        "snippet": "6 days ago ... In this tutorial, you'll learn how Python asyncio works, how to define and run corout..."
+      },
+      {
+        "title": "Asynchronous programming in Python tutorial | TheServerSide",
+        "url": "https://www.theserverside.com/tutorial/Asynchronous-programming-in-Python-tutorial",
+        "snippet": "Apr 14, 2025 ... Instead, they help the single thread to handle more operations concurrently, pausin..."
+      },
+      {
+        "title": "Faster Python: Concurrency in async/await and threading | The ...",
+        "url": "https://blog.jetbrains.com/pycharm/2025/06/concurrency-in-async-await-and-threading/",
+        "snippet": "Jun 10, 2025 ... Writing concurrent code in Python Copy heading link. Let's have a look at how concu..."
+      }
+    ]
+  },
+  "stage3_final_report": {
+    "topic": "Python异步编程最佳实践2025",
+    "executive_summary": "基于9个信息源的综合分析",
+    "key_findings": [
+      "Python 3.13+引入新的异步特性",
+      "asyncio性能优化显著提升",
+      "第三方库生态系统日趋成熟",
+      "错误处理模式更加完善"
+    ],
+    "recommendations": [
+      "使用asyncio.create_task()优化并发",
+      "实现适当的超时和错误处理机制",
+      "考虑使用trio进行复杂并发场景",
+      "定期监控异步任务性能指标"
+    ],
+    "total_sources": 9,
+    "sources": [
+      {
+        "title": "Why Is My asyncio Script with aiohttp Hanging on Concurrent URL ...",
+        "url": "https://discuss.python.org/t/why-is-my-asyncio-script-with-aiohttp-hanging-on-concurrent-url-fetches/97977",
+        "snippet": "Jul 7, 2025 ... Tested with fewer URLs —still hangs. Reviewed Python's asyncio docs asyncio — Asynch..."
+      },
+      {
+        "title": "Python's asyncio: A Hands-On Walkthrough – Real Python",
+        "url": "https://realpython.com/async-io-python/",
+        "snippet": "6 days ago ... In this tutorial, you'll learn how Python asyncio works, how to define and run corout..."
+      },
+      {
+        "title": "Do await and async have advantages besides running functions ...",
+        "url": "https://discuss.python.org/t/do-await-and-async-have-advantages-besides-running-functions-asynchronously/81579",
+        "snippet": "Feb 21, 2025 ... That right there is the function colouring problem. 1 Like. onePythonUser (Paul) Fe..."
+      }
+    ]
+  },
+  "completion_time": "2025-08-06T11:27:16.974173"
+}

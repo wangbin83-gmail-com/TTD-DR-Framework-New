@@ -1,0 +1,28 @@
+{
+  "execution_id": "demo_20250803_174907",
+  "timestamp": "2025-08-03T17:49:07.013270",
+  "node_name": "demo_node",
+  "state": {
+    "topic": "Artificial Intelligence in Healthcare: Current Applications and Future Prospects",
+    "requirements": {
+      "domain": "technology",
+      "complexity_level": "intermediate",
+      "max_iterations": 3,
+      "quality_threshold": 0.75,
+      "max_sources": 15,
+      "preferred_source_types": [
+        "academic",
+        "news",
+        "technical"
+      ]
+    },
+    "current_draft": null,
+    "information_gaps": [],
+    "retrieved_info": [],
+    "iteration_count": 0,
+    "quality_metrics": null,
+    "evolution_history": [],
+    "final_report": null,
+    "error_log": []
+  }
+}

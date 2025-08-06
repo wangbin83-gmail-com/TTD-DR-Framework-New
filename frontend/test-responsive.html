@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design Test - TTD-DR Framework</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        neutral: {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#e5e5e5',
+                            300: '#d4d4d4',
+                            400: '#a3a3a3',
+                            500: '#737373',
+                            600: '#525252',
+                            700: '#404040',
+                            800: '#262626',
+                            900: '#171717',
+                        },
+                    },
+                    screens: {
+                        'xs': '475px',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .btn-base {
+            @apply inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg touch-manipulation min-h-[44px] active:scale-95;
+        }
+        .btn-primary {
+            @apply btn-base bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+        }
+        .btn-secondary {
+            @apply btn-base bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus:ring-neutral-500 border border-neutral-300;
+        }
+        .input-base {
+            @apply w-full px-4 py-3 text-sm border border-neutral-300 rounded-xl bg-white placeholder-neutral-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-neutral-50 disabled:text-neutral-500 min-h-[44px] touch-manipulation;
+        }
+        .card-base {
+            @apply bg-white rounded-2xl shadow-md border border-neutral-200;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Mobile-First Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex items-center space-x-2 md:space-x-4 min-w-0 flex-1">
+                    <h1 class="text-lg md:text-xl font-bold text-gray-900 truncate">TTD-DR Framework</h1>
+                    <span class="hidden sm:inline text-xs md:text-sm text-gray-500 truncate">Test-Time Diffusion Deep Researcher</span>
+                </div>
+                <div class="flex items-center space-x-1 md:space-x-2">
+                    <button class="btn-secondary space-x-1 md:space-x-2 text-sm px-2 md:px-4 py-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span class="hidden sm:inline">New Research</span>
+                    </button>
+                    <button class="btn-primary space-x-1 md:space-x-2 text-sm px-2 md:px-4 py-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Report</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-4 md:py-8">
+        <!-- Research Form -->
+        <div class="max-w-2xl mx-auto p-4 md:p-6 card-base mb-6">
+            <h2 class="text-xl md:text-2xl font-bold text-neutral-800 mb-4 md:mb-6">Start New Research</h2>
+            
+            <form class="space-y-4 md:space-y-6">
+                <!-- Research Topic -->
+                <div>
+                    <label class="block text-sm font-medium text-neutral-700 mb-2">Research Topic *</label>
+                    <textarea 
+                        class="input-base" 
+                        rows="3" 
+                        placeholder="Enter your research topic or question..."
+                    ></textarea>
+                </div>
+
+                <!-- Grid Layout for Advanced Options -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-700 mb-2">Max Iterations</label>
+                        <input type="number" class="input-base" value="5">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-700 mb-2">Max Sources</label>
+                        <input type="number" class="input-base" value="20">
+                    </div>
+                </div>
+
+                <!-- Source Types Grid -->
+                <div>
+                    <label class="block text-sm font-medium text-neutral-700 mb-2">Preferred Source Types</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <label class="flex items-center space-x-2 md:space-x-3 p-2 md:p-3 rounded-xl border border-neutral-200 hover:border-neutral-300 transition-colors cursor-pointer touch-manipulation">
+                            <input type="checkbox" class="rounded border-neutral-300 text-primary-600 focus:ring-primary-500 focus:ring-2 w-4 h-4" checked>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">Academic Papers</span>
+                        </label>
+                        <label class="flex items-center space-x-2 md:space-x-3 p-2 md:p-3 rounded-xl border border-neutral-200 hover:border-neutral-300 transition-colors cursor-pointer touch-manipulation">
+                            <input type="checkbox" class="rounded border-neutral-300 text-primary-600 focus:ring-primary-500 focus:ring-2 w-4 h-4" checked>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">News Articles</span>
+                        </label>
+                        <label class="flex items-center space-x-2 md:space-x-3 p-2 md:p-3 rounded-xl border border-neutral-200 hover:border-neutral-300 transition-colors cursor-pointer touch-manipulation">
+                            <input type="checkbox" class="rounded border-neutral-300 text-primary-600 focus:ring-primary-500 focus:ring-2 w-4 h-4">
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">Official Documents</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full btn-primary">
+                    Start Research
+                </button>
+            </form>
+        </div>
+
+        <!-- Dashboard Preview -->
+        <div class="max-w-7xl mx-auto p-4 md:p-6">
+            <div class="bg-white rounded-lg shadow-lg p-4 md:p-6 mb-4 md:mb-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 space-y-4 sm:space-y-0">
+                    <div class="min-w-0 flex-1">
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-800 truncate">Research Workflow</h2>
+                        <p class="text-sm md:text-base text-gray-600 truncate">Workflow ID: test-workflow-123</p>
+                    </div>
+                    <div class="flex space-x-2 flex-shrink-0">
+                        <button class="btn-primary space-x-1 md:space-x-2 text-sm px-3 py-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                            <span class="hidden sm:inline">Restart</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="mb-4">
+                    <div class="flex justify-between text-sm text-gray-600 mb-2">
+                        <span>Progress</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="border-b border-neutral-200">
+                    <nav class="-mb-px flex space-x-4 md:space-x-8 overflow-x-auto">
+                        <button class="py-3 px-2 border-b-3 font-medium text-sm transition-all duration-200 whitespace-nowrap border-primary-500 text-primary-600 bg-primary-50/50">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                                <span>Overview</span>
+                            </div>
+                        </button>
+                        <button class="py-3 px-2 border-b-3 font-medium text-sm transition-all duration-200 whitespace-nowrap border-transparent text-neutral-500 hover:text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                                <span class="hidden sm:inline">Workflow Graph</span>
+                                <span class="sm:hidden">Graph</span>
+                            </div>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Current State Grid -->
+            <div class="bg-white rounded-lg shadow-lg p-4 md:p-6">
+                <h3 class="text-base md:text-lg font-semibold text-gray-800 mb-4">Current State</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                    <div class="p-3 md:p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-medium text-gray-700 mb-2 text-sm md:text-base">Topic</h4>
+                        <p class="text-xs md:text-sm text-gray-600 break-words">AI in Healthcare Research</p>
+                    </div>
+                    <div class="p-3 md:p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-medium text-gray-700 mb-2 text-sm md:text-base">Iteration</h4>
+                        <p class="text-xs md:text-sm text-gray-600">3 / 5</p>
+                    </div>
+                    <div class="p-3 md:p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-medium text-gray-700 mb-2 text-sm md:text-base">Quality Score</h4>
+                        <p class="text-xs md:text-sm text-gray-600">85.2%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export Buttons Test -->
+        <div class="max-w-7xl mx-auto p-4 md:p-6">
+            <div class="bg-white rounded-lg shadow-lg p-4 md:p-6">
+                <h3 class="text-base md:text-lg font-semibold text-gray-800 mb-4">Export Options</h3>
+                <div class="flex flex-wrap gap-2">
+                    <button class="btn-primary space-x-1 md:space-x-2 text-sm px-3 py-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Export PDF</span>
+                        <span class="sm:hidden">PDF</span>
+                    </button>
+                    <button class="btn-secondary space-x-1 md:space-x-2 text-sm px-3 py-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Export Word</span>
+                        <span class="sm:hidden">Word</span>
+                    </button>
+                    <button class="btn-secondary space-x-1 md:space-x-2 text-sm px-3 py-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Export Markdown</span>
+                        <span class="sm:hidden">MD</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+                <p class="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
+                    © 2024 TTD-DR Framework. Powered by Kimi K2 and Google Search API.
+                </p>
+                <div class="flex space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500">
+                    <span>Version 1.0.0</span>
+                    <span class="hidden sm:inline">Workflow: test-123...</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Responsive Test Info -->
+    <div class="fixed bottom-4 right-4 bg-black text-white px-3 py-2 rounded-lg text-xs font-mono">
+        <div class="block xs:hidden">XS: &lt;475px</div>
+        <div class="hidden xs:block sm:hidden">SM: 475px-640px</div>
+        <div class="hidden sm:block md:hidden">MD: 640px-768px</div>
+        <div class="hidden md:block lg:hidden">LG: 768px-1024px</div>
+        <div class="hidden lg:block xl:hidden">XL: 1024px-1280px</div>
+        <div class="hidden xl:block 2xl:hidden">2XL: 1280px-1536px</div>
+        <div class="hidden 2xl:block">2XL+: &gt;1536px</div>
+    </div>
+</body>
+</html>

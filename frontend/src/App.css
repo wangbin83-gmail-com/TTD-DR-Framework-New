@@ -1,0 +1,149 @@
+/* Additional custom styles for the TTD-DR Framework */
+
+.workflow-node-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+.workflow-node-running {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.report-content {
+  line-height: 1.8;
+}
+
+.report-content h1,
+.report-content h2,
+.report-content h3,
+.report-content h4,
+.report-content h5,
+.report-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.report-content h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.report-content h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.25rem;
+}
+
+.report-content h3 {
+  font-size: 1.25rem;
+}
+
+.report-content p {
+  margin-bottom: 1rem;
+}
+
+.report-content ul,
+.report-content ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.report-content li {
+  margin-bottom: 0.5rem;
+}
+
+.report-content blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #6b7280;
+}
+
+.report-content code {
+  background-color: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.report-content pre {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.report-content pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.report-content a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.report-content a:hover {
+  color: #1d4ed8;
+}
+
+/* Loading animations */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .mobile-stack {
+    flex-direction: column;
+  }
+  
+  .mobile-full {
+    width: 100%;
+  }
+  
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+  
+  .print-break-before {
+    break-before: page;
+  }
+}

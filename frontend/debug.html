@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTD-DR 调试页面</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .title {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎯</div>
+        <h1 class="title">TTD-DR 研究框架</h1>
+        
+        <div id="status-container">
+            <div class="status info">正在检测系统状态...</div>
+        </div>
+        
+        <div class="links">
+            <a href="http://localhost:5175" class="button" target="_blank">访问前端</a>
+            <a href="http://localhost:8000/docs" class="button" target="_blank">API文档</a>
+            <a href="http://localhost:8000/health" class="button" target="_blank">健康检查</a>
+        </div>
+        
+        <div id="details" style="margin-top: 20px; text-align: left;">
+            <h3>调试信息：</h3>
+            <div id="debug-info"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateStatus() {
+            const container = document.getElementById('status-container');
+            const details = document.getElementById('debug-info');
+            
+            // 基础信息
+            details.innerHTML = `
+                <p><strong>当前时间：</strong> ${new Date().toLocaleString('zh-CN')}</p>
+                <p><strong>用户代理：</strong> ${navigator.userAgent.substring(0, 100)}...</p>
+                <p><strong>页面地址：</strong> ${location.href}</p>
+                <p><strong>屏幕分辨率：</strong> ${screen.width}x${screen.height}</p>
+            `;
+
+            // 测试后端连接
+            fetch('http://localhost:8000/health')
+                .then(res => res.json())
+                .then(data => {
+                    container.innerHTML = `
+                        <div class="status success">✅ 后端服务正常</div>
+                        <div class="status success">✅ 前端服务正常</div>
+                    `;
+                })
+                .catch(err => {
+                    container.innerHTML = `
+                        <div class="status error">❌ 后端连接失败</div>
+                        <div class="status info">💡 请确保后端服务已启动</div>
+                    `;
+                });
+        }
+
+        // 页面加载完成后更新状态
+        document.addEventListener('DOMContentLoaded', updateStatus);
+        setInterval(updateStatus, 10000); // 每10秒更新一次
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTD-DR Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        button { padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 10px 5px; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 TTD-DR Framework Test Page</h1>
+        <div id="status">
+            <p class="success">✅ HTML页面加载成功</p>
+            <p>当前时间: <span id="time"></span></p>
+        </div>
+        
+        <h3>系统状态检查</h3>
+        <div>
+            <button onclick="testBackend()">测试后端连接</button>
+            <button onclick="testFrontend()">测试前端服务</button>
+            <button onclick="location.reload()">刷新页面</button>
+        </div>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        // 显示当前时间
+        document.getElementById('time').textContent = new Date().toLocaleString();
+        
+        // 测试后端连接
+        async function testBackend() {
+            const results = document.getElementById('results');
+            try {
+                const response = await fetch('http://localhost:8000/health');
+                const data = await response.json();
+                results.innerHTML = `
+                    <h4>后端测试结果:</h4>
+                    <p class="success">✅ 后端连接成功</p>
+                    <p>状态: ${data.status}</p>
+                    <p>版本: ${data.version}</p>
+                `;
+            } catch (error) {
+                results.innerHTML = `
+                    <h4>后端测试结果:</h4>
+                    <p class="error">❌ 后端连接失败</p>
+                    <p>错误: ${error.message}</p>
+                    <p>请确保后端服务在 http://localhost:8000 运行</p>
+                `;
+            }
+        }
+        
+        // 测试前端服务
+        function testFrontend() {
+            const results = document.getElementById('results');
+            results.innerHTML = `
+                <h4>前端服务状态:</h4>
+                <p class="success">✅ 前端服务正常</p>
+                <p>当前页面: ${location.href}</p>
+                <p>User Agent: ${navigator.userAgent.substring(0, 100)}...</p>
+            `;
+        }
+        
+        // 自动测试
+        setTimeout(() => {
+            testFrontend();
+        }, 1000);
+    </script>
+</body>
+</html>
