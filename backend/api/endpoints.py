@@ -619,7 +619,7 @@ async def download_report(
 async def websocket_endpoint(
     websocket: WebSocket,
     execution_id: str,
-    token: Optional[str] = Query(None)
+    token: Optional[str] = Query(None, description="JWT token for authentication")
 ):
     """
     WebSocket endpoint for real-time workflow progress updates
@@ -633,7 +633,16 @@ async def websocket_endpoint(
         # Authenticate WebSocket connection
         token_data = await authenticate_websocket(websocket, token)
         user_id = token_data.user_id if token_data else None
-        
+
+        # Verify user has access to the workflow
+        if execution_id in workflow_results:
+            workflow_user_id = workflow_results[execution_id].get("user_id")
+            if workflow_user_id != user_id:
+                # Allow admins to connect to any workflow
+                if not token_data or "*" not in token_data.permissions:
+                    await websocket.close(code=4003, reason="Access denied to this workflow")
+                    return
+
         # Connect to connection manager
         connected = await connection_manager.connect(websocket, execution_id, user_id)
         
@@ -960,7 +969,7 @@ async def execute_workflow_background(
         )
         
         # Execute workflow
-        final_state = workflow_engine.execute_workflow(initial_state, execution_id)
+        final_state = await workflow_engine.execute_workflow(initial_state, execution_id)
         
         # Update workflow results
         workflow_results[execution_id].update({

@@ -16,7 +16,7 @@ class TTDRApiClient {
   private retryDelay = 1000;
   private token: string | null = null;
 
-  constructor(baseURL: string = '/api') {
+  constructor(baseURL: string = 'http://localhost:8000') {
     this.client = axios.create({
       baseURL,
       timeout: 30000,
@@ -73,6 +73,10 @@ class TTDRApiClient {
         return Promise.reject(this.handleError(error));
       }
     );
+  }
+
+  getToken(): string | null {
+    return this.token;
   }
 
   private handleError(error: any): ApiError {
@@ -237,14 +241,22 @@ export class TTDRWebSocketClient {
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
   private reconnectDelay = 1000;
+  private token: string | null = null;
 
-  constructor(url: string = 'ws://localhost:8000/api/v1/research/ws') {
-    this.url = url;
+  constructor() {
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const host = window.location.host;
+    this.url = `${protocol}//${host}/api/v1/research/ws`;
+  }
+
+  setToken(token: string | null): void {
+    this.token = token;
   }
 
   connect(workflowId: string, onMessage: (data: any) => void, onError?: (error: Event) => void): void {
     try {
-      this.ws = new WebSocket(`${this.url}/${workflowId}`);
+      const url = this.token ? `${this.url}/${workflowId}?token=${this.token}` : `${this.url}/${workflowId}`;
+      this.ws = new WebSocket(url);
 
       this.ws.onopen = () => {
         console.log('WebSocket connected');

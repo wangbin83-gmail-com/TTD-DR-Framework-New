@@ -20,23 +20,23 @@ export const WorkflowNodeDetails: React.FC<WorkflowNodeDetailsProps> = ({
   const getNodeDescription = (nodeId: string): string => {
     switch (nodeId) {
       case 'draft_generator':
-        return 'Creates the initial research draft that serves as a structured foundation for the research process.';
+        return '创建初始研究草稿，为研究过程提供结构化基础。';
       case 'gap_analyzer':
-        return 'Identifies specific areas in the draft that require additional information or improvement.';
+        return '识别草稿中需要额外信息或改进的特定区域。';
       case 'retrieval_engine':
-        return 'Retrieves relevant information from external sources to fill identified gaps.';
+        return '从外部来源检索相关信息以填补已识别的空白。';
       case 'information_integrator':
-        return 'Seamlessly incorporates retrieved information into the existing draft structure.';
+        return '将检索到的信息无缝整合到现有草稿结构中。';
       case 'quality_assessor':
-        return 'Evaluates draft quality and determines if further iterations are needed.';
+        return '评估草稿质量并确定是否需要进一步迭代。';
       case 'quality_check':
-        return 'Decision node that determines whether to continue iterating or proceed to final synthesis.';
+        return '决策节点，确定是继续迭代还是进行最终综合。';
       case 'self_evolution_enhancer':
-        return 'Applies self-improvement algorithms to enhance framework components.';
+        return '应用自我改进算法来增强框架组件。';
       case 'report_synthesizer':
-        return 'Generates the final polished research report with proper formatting and citations.';
+        return '生成具有正确格式和引用的最终完善研究报告。';
       default:
-        return 'Workflow node in the TTD-DR research process.';
+        return 'TTD-DR研究工作流节点。';
     }
   };
 

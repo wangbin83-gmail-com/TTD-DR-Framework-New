@@ -97,12 +97,15 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 @app.exception_handler(Exception)
 async def general_exception_handler(request: Request, exc: Exception):
     """Handle general exceptions"""
-    logger.error(f"Unhandled exception: {exc}", exc_info=True)
+    import traceback
+    error_details = traceback.format_exc()
+    logger.error(f"Unhandled exception: {exc}\n{error_details}", exc_info=True)
     return JSONResponse(
         status_code=500,
         content={
             "error": "Internal Server Error",
             "message": "An unexpected error occurred",
+            "details": error_details,
             "status_code": 500,
             "path": str(request.url.path),
             "timestamp": str(asyncio.get_event_loop().time())
@@ -173,5 +176,5 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=8000,
         reload=True,
-        log_level="info"
+        log_level="debug"
     )

@@ -95,11 +95,11 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
             </svg>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent mb-6 tracking-tight">
-            AI Research Assistant
+            AI研究助手
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Transform your research questions into comprehensive, well-sourced reports 
-            through intelligent AI analysis and iterative refinement.
+            将您的研究问题转化为全面、有据可查的报告，
+            通过智能AI分析和迭代优化实现。
           </p>
         </header>
         
@@ -107,10 +107,10 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
           <div className="bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700/20 p-8 md:p-12 transform hover:-translate-y-2 transition-transform duration-300">
             <div className="text-center mb-10">
               <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent mb-3">
-                Begin Your Research
+                开始您的研究
               </h2>
               <p className="text-lg text-gray-400">
-                Enter your research topic and configure advanced parameters.
+                输入您的研究主题并配置高级参数。
               </p>
             </div>
             
@@ -118,7 +118,7 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
               {/* Research Topic */}
               <div className="space-y-3">
                 <label htmlFor="topic" className="block text-lg font-semibold text-gray-100">
-                  What would you like to research? <span className="text-red-400">*</span>
+                  您想研究什么？ <span className="text-red-400">*</span>
                 </label>
                 <div className="relative group">
                   <textarea
@@ -134,7 +134,7 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
                         : 'border-gray-600 bg-gray-700 text-gray-100 focus:ring-blue-200 focus:border-blue-500 hover:border-gray-500 group-hover:border-blue-400'
                     }`}
                     rows={4}
-                    placeholder="e.g., 'The impact of artificial intelligence on modern healthcare delivery and patient outcomes'"
+                    placeholder="例如：'人工智能对现代医疗保健和患者结果的影响'"
                     disabled={isLoading}
                     aria-required="true"
                     autoFocus
@@ -148,7 +148,7 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
                 )}
                 <p className="text-sm text-gray-400 flex items-start bg-gray-700/50 p-3 rounded-lg">
                   <span className="mr-2 text-lg">💡</span>
-                  <span><strong>Pro tip:</strong> Be specific! Instead of "AI in healthcare", try "How AI diagnostic tools are reducing misdiagnosis rates in rural hospitals"</span>
+                  <span><strong>专业提示：</strong>要具体！不要只说"医疗AI"，试试"AI诊断工具如何降低农村医院的误诊率"</span>
                 </p>
               </div>
 
@@ -156,7 +156,7 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
                 {/* Research Domain */}
                 <div className="space-y-2">
                   <label htmlFor="domain" className="block text-base font-semibold text-gray-200">
-                    Research Domain
+                    研究领域
                   </label>
                   <select
                     id="domain"
@@ -165,18 +165,18 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
                     className="w-full px-4 py-3 rounded-xl border-2 border-gray-600 bg-gray-700 text-gray-100 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200 focus:border-blue-500 hover:border-gray-500 text-base"
                     disabled={isLoading}
                   >
-                    <option value={ResearchDomain.GENERAL}>🌍 General</option>
-                    <option value={ResearchDomain.TECHNOLOGY}>💻 Technology</option>
-                    <option value={ResearchDomain.SCIENCE}>🔬 Science</option>
-                    <option value={ResearchDomain.BUSINESS}>💼 Business</option>
-                    <option value={ResearchDomain.ACADEMIC}>🎓 Academic</option>
+                    <option value={ResearchDomain.GENERAL}>🌍 通用</option>
+                    <option value={ResearchDomain.TECHNOLOGY}>💻 技术</option>
+                    <option value={ResearchDomain.SCIENCE}>🔬 科学</option>
+                    <option value={ResearchDomain.BUSINESS}>💼 商业</option>
+                    <option value={ResearchDomain.ACADEMIC}>🎓 学术</option>
                   </select>
                 </div>
 
                 {/* Complexity Level */}
                 <div className="space-y-2">
                   <label htmlFor="complexity_level" className="block text-base font-semibold text-gray-200">
-                    Complexity Level
+                    复杂程度
                   </label>
                   <select
                     id="complexity_level"
@@ -185,10 +185,10 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
                     className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-900 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200 focus:border-blue-500 hover:border-slate-300 text-base"
                     disabled={isLoading}
                   >
-                    <option value={ComplexityLevel.BASIC}>🟢 Basic</option>
-                    <option value={ComplexityLevel.INTERMEDIATE}>🟡 Intermediate</option>
-                    <option value={ComplexityLevel.ADVANCED}>🟠 Advanced</option>
-                    <option value={ComplexityLevel.EXPERT}>🔴 Expert</option>
+                    <option value={ComplexityLevel.BASIC}>🟢 基础</option>
+                    <option value={ComplexityLevel.INTERMEDIATE}>🟡 中级</option>
+                    <option value={ComplexityLevel.ADVANCED}>🟠 高级</option>
+                    <option value={ComplexityLevel.EXPERT}>🔴 专家</option>
                   </select>
                 </div>
               </div>
@@ -197,7 +197,7 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="max_iterations" className="block text-sm font-semibold text-gray-200">
-                    Max Iterations
+                    最大迭代次数
                   </label>
                   <input
                     type="number"
@@ -245,7 +245,7 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
               {/* Quality Threshold */}
               <div className="space-y-3">
                 <label htmlFor="quality_threshold" className="block text-sm font-semibold text-gray-200">
-                    Quality Threshold: <span className="text-blue-400 font-bold">{watch('quality_threshold')}</span>
+                    质量阈值: <span className="text-blue-400 font-bold">{watch('quality_threshold')}</span>
                   </label>
                 <div className="relative">
                   <input
@@ -259,9 +259,9 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
                     disabled={isLoading}
                   />
                   <div className="absolute -top-1 left-0 right-0 flex justify-between text-xs text-gray-400">
-                    <span className="bg-white px-2 rounded">🟢 Standard</span>
-                    <span className="bg-white px-2 rounded">🟡 High</span>
-                    <span className="bg-white px-2 rounded">🔴 Premium</span>
+                    <span className="bg-white px-2 rounded">🟢 标准</span>
+                    <span className="bg-white px-2 rounded">🟡 高</span>
+                    <span className="bg-white px-2 rounded">🔴 优质</span>
                   </div>
                 </div>
               </div>
@@ -269,7 +269,7 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
               {/* Preferred Source Types */}
               <div className="space-y-3">
                 <label className="block text-sm font-semibold text-gray-200">
-                    Preferred Source Types
+                    首选来源类型
                   </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {sourceTypeOptions.map((option) => (
@@ -297,7 +297,7 @@ export const ResearchForm: React.FC<ResearchFormProps> = ({ onSubmit, isLoading 
                 >
                   <span className="flex items-center justify-center space-x-2">
                     <span>🚀</span>
-                    <span>Start Research Now</span>
+                    <span>立即开始研究</span>
                   </span>
                 </LoadingButton>
               </div>

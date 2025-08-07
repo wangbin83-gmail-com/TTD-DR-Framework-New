@@ -12,7 +12,7 @@ from models.core import TTDRState, InformationGap, GapType, Priority, SearchQuer
 
 logger = logging.getLogger(__name__)
 
-def gap_analyzer_node(state: TTDRState) -> TTDRState:
+async def gap_analyzer_node(state: TTDRState) -> TTDRState:
     """
     Analyze current draft for information gaps using Kimi K2
     
@@ -29,7 +29,8 @@ def gap_analyzer_node(state: TTDRState) -> TTDRState:
         from services.kimi_k2_gap_analyzer import KimiK2InformationGapAnalyzer
         from services.kimi_k2_search_query_generator import KimiK2SearchQueryGenerator
         
-        if not state.get("current_draft"):
+        current_draft = state.get("current_draft")
+        if not current_draft:
             logger.warning("No current draft available for gap analysis")
             return {
                 **state,
@@ -42,32 +43,33 @@ def gap_analyzer_node(state: TTDRState) -> TTDRState:
         query_generator = KimiK2SearchQueryGenerator()
         
         # Run async gap identification
-        gaps = _run_async_operation(
-            gap_analyzer.identify_gaps(state["current_draft"])
-        )
+        gaps = await gap_analyzer.identify_gaps(current_draft)
         
-        # Generate search queries for each gap
+        # Generate search queries for each gap concurrently
+        query_tasks = []
         for gap in gaps:
-            try:
-                search_queries = _run_async_operation(
-                    query_generator.generate_search_queries(
-                        gap=gap,
-                        topic=state["topic"],
-                        domain=state["current_draft"].structure.domain,
-                        max_queries=3
-                    )
+            query_tasks.append(
+                query_generator.generate_search_queries(
+                    gap=gap,
+                    topic=state["topic"],
+                    domain=current_draft.structure.domain,
+                    max_queries=3
                 )
-                gap.search_queries = search_queries
-                
-            except Exception as e:
-                logger.error(f"Failed to generate queries for gap {gap.id}: {e}")
-                # Add fallback query
+            )
+        
+        query_results = await asyncio.gather(*query_tasks, return_exceptions=True)
+
+        for gap, result in zip(gaps, query_results):
+            if isinstance(result, Exception):
+                logger.error(f"Failed to generate queries for gap {gap.id}: {result}")
                 gap.search_queries = [
                     SearchQuery(
                         query=f"{state['topic']} {gap.description[:50]}",
                         priority=Priority.MEDIUM
                     )
                 ]
+            else:
+                gap.search_queries = result
         
         logger.info(f"Identified {len(gaps)} information gaps with search queries")
         
@@ -77,7 +79,7 @@ def gap_analyzer_node(state: TTDRState) -> TTDRState:
         }
         
     except Exception as e:
-        logger.error(f"Gap analysis failed: {e}")
+        logger.error(f"Gap analysis failed: {e}", exc_info=True)
         
         # Fallback to simple gap identification
         gaps = _create_fallback_gaps(state)
@@ -88,28 +90,7 @@ def gap_analyzer_node(state: TTDRState) -> TTDRState:
             "error_log": state.get("error_log", []) + [f"Gap analysis error: {str(e)}"]
         }
 
-def _run_async_operation(coro):
-    """Run async operation handling event loop issues"""
-    try:
-        # Check if coro is already a coroutine object
-        if asyncio.iscoroutine(coro):
-            return asyncio.run(coro)
-        else:
-            # If it's already a result, return it
-            return coro
-    except RuntimeError as e:
-        if "asyncio.run() cannot be called from a running event loop" in str(e):
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            try:
-                if asyncio.iscoroutine(coro):
-                    return loop.run_until_complete(coro)
-                else:
-                    return coro
-            finally:
-                loop.close()
-        else:
-            raise
+
 
 def _create_fallback_gaps(state: TTDRState) -> List[InformationGap]:
     """Create fallback gaps when Kimi K2 analysis fails"""

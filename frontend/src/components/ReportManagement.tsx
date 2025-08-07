@@ -325,9 +325,9 @@ export const ReportManagement: React.FC<ReportManagementProps> = ({
       <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 mb-4 md:mb-6">
         <div className="flex flex-col sm:flex-row justify-between items-start mb-4 space-y-4 sm:space-y-0">
           <div className="min-w-0 flex-1">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 truncate">Research Report Management</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 truncate">研究报告管理</h2>
             <p className="text-sm md:text-base text-gray-600 truncate">{topic}</p>
-            <p className="text-xs md:text-sm text-gray-500 truncate">Workflow ID: {workflowId}</p>
+            <p className="text-xs md:text-sm text-gray-500 truncate">工作流ID: {workflowId}</p>
           </div>
           
           <div className="flex items-center space-x-2 flex-shrink-0">
@@ -347,11 +347,11 @@ export const ReportManagement: React.FC<ReportManagementProps> = ({
           <div className="border-b border-neutral-200">
             <nav className="flex space-x-1 -mb-px">
               {[
-                { id: 'view', label: 'View', icon: Eye },
-                { id: 'edit', label: 'Edit', icon: Edit3 },
-                { id: 'annotations', label: 'Annotations', icon: MessageSquare },
-                { id: 'versions', label: 'Versions', icon: History },
-                { id: 'compare', label: 'Compare', icon: GitCompare }
+                { id: 'view', label: '查看', icon: Eye },
+        { id: 'edit', label: '编辑', icon: Edit3 },
+        { id: 'annotations', label: '注释', icon: MessageSquare },
+        { id: 'versions', label: '版本', icon: History },
+        { id: 'compare', label: '对比', icon: GitCompare }
               ].map(({ id, label, icon: Icon }) => (
                 <button
                   key={id}
@@ -524,7 +524,7 @@ export const ReportManagement: React.FC<ReportManagementProps> = ({
                       <Edit3 className="w-4 h-4 text-primary-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-neutral-900">Content Editor</h3>
+                      <h3 className="text-lg font-semibold text-neutral-900">内容编辑器</h3>
                       <p className="text-sm text-neutral-600">Markdown supported</p>
                     </div>
                   </div>
@@ -548,7 +548,7 @@ export const ReportManagement: React.FC<ReportManagementProps> = ({
                         className="btn-secondary space-x-2"
                       >
                         <X className="w-4 h-4" />
-                        <span>Cancel</span>
+                        <span>取消</span>
                       </button>
                     </div>
                   </div>
@@ -624,7 +624,7 @@ Wrap up your findings..."
                   <div>
                     <h3 className="text-lg font-semibold text-neutral-900">Version History</h3>
                     <p className="text-sm text-neutral-600">
-                      {versions.length} {versions.length === 1 ? 'version' : 'versions'} available
+                      {versions.length} {versions.length === 1 ? '个版本' : '个版本'}可用
                     </p>
                   </div>
                 </div>
@@ -635,7 +635,7 @@ Wrap up your findings..."
                   <div className="text-center py-12">
                     <History className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
                     <p className="text-neutral-500 text-sm mb-2">No version history available</p>
-                    <p className="text-neutral-400 text-xs">Versions will appear here as you save changes</p>
+                    <p className="text-neutral-400 text-xs">保存更改后，版本将在此处显示</p>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -733,7 +733,7 @@ Wrap up your findings..."
                     <GitCompare className="w-4 h-4 text-warning-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-neutral-900">Compare Versions</h3>
+                    <h3 className="text-lg font-semibold text-neutral-900">版本对比</h3>
                     <p className="text-sm text-neutral-600">Side-by-side version comparison</p>
                   </div>
                 </div>
@@ -782,7 +782,7 @@ Wrap up your findings..."
                         </div>
                         <div>
                           <h4 className="font-semibold text-primary-900">
-                            {compareVersions.v1 === 'current' ? 'Current Version' : `Version ${compareVersions.v1}`}
+                            {compareVersions.v1 === 'current' ? '当前版本' : `版本 ${compareVersions.v1}`}
                           </h4>
                           <p className="text-sm text-primary-600">
                             {compareVersions.v1 === 'current' 
@@ -807,7 +807,7 @@ Wrap up your findings..."
                         </div>
                         <div>
                           <h4 className="font-semibold text-success-900">
-                            {compareVersions.v2 === 'current' ? 'Current Version' : `Version ${compareVersions.v2}`}
+                            {compareVersions.v2 === 'current' ? '当前版本' : `版本 ${compareVersions.v2}`}
                           </h4>
                           <p className="text-sm text-success-600">
                             {compareVersions.v2 === 'current' 
@@ -827,8 +827,8 @@ Wrap up your findings..."
                 ) : (
                   <div className="text-center py-12">
                     <GitCompare className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
-                    <p className="text-neutral-500 text-sm mb-2">Select two versions to compare</p>
-                    <p className="text-neutral-400 text-xs">Choose versions from the dropdowns above to see differences</p>
+                    <p className="text-neutral-500 text-sm mb-2">选择两个版本进行对比</p>
+            <p className="text-neutral-400 text-xs">从上方下拉菜单中选择版本以查看差异</p>
                   </div>
                 )}
 
@@ -876,7 +876,7 @@ Wrap up your findings..."
                       <MessageSquare className="w-4 h-4 text-warning-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-neutral-900">Annotations</h3>
+                      <h3 className="text-lg font-semibold text-neutral-900">注释</h3>
                       <p className="text-sm text-neutral-600">
                         {annotations.length} total, {annotations.filter(a => !a.resolved).length} pending
                       </p>
@@ -887,7 +887,7 @@ Wrap up your findings..."
                     className="btn-primary space-x-2 text-sm px-4 py-2 shadow-sm"
                   >
                     <Plus className="w-4 h-4" />
-                    <span>Add Note</span>
+                    <span>添加注释</span>
                   </button>
                 </div>
               </div>
@@ -899,7 +899,7 @@ Wrap up your findings..."
                     <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400" />
                     <input
                       type="text"
-                      placeholder="Search annotations and comments..."
+                      placeholder="搜索注释和评论..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="w-full pl-10 pr-4 py-2.5 text-sm border border-neutral-300 rounded-xl bg-white placeholder-neutral-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
@@ -916,7 +916,7 @@ Wrap up your findings..."
                             : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-200'
                         }`}
                       >
-                        {filter === 'all' ? 'All' : filter === 'unresolved' ? 'Pending' : 'Resolved'}
+                        {filter === 'all' ? '全部' : filter === 'unresolved' ? '待处理' : '已解决'}
                         {filter !== 'all' && (
                           <span className="ml-1 text-xs">
                             ({filter === 'unresolved' 
@@ -950,7 +950,7 @@ Wrap up your findings..."
                             <button
                               onClick={() => resolveAnnotation(annotation.id)}
                               className="p-1.5 text-success-600 hover:text-success-800 hover:bg-success-100 rounded-lg transition-all duration-200"
-                              title="Mark as resolved"
+                              title="标记为已解决"
                             >
                               <MessageSquare className="w-4 h-4" />
                             </button>
@@ -958,7 +958,7 @@ Wrap up your findings..."
                           <button
                             onClick={() => deleteAnnotation(annotation.id)}
                             className="p-1.5 text-error-600 hover:text-error-800 hover:bg-error-100 rounded-lg transition-all duration-200"
-                            title="Delete annotation"
+                            title="删除注释"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -984,7 +984,7 @@ Wrap up your findings..."
                         </div>
                         {annotation.resolved && (
                           <span className="ml-auto text-xs bg-success-100 text-success-700 px-2 py-1 rounded-full font-medium">
-                            Resolved
+                            已解决
                           </span>
                         )}
                       </div>
@@ -1005,9 +1005,9 @@ Wrap up your findings..."
                     <div className="text-center py-12">
                       <MessageSquare className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
                       <p className="text-neutral-500 text-sm">
-                        {searchTerm || annotationFilter !== 'all' 
-                          ? 'No annotations match your search criteria.' 
-                          : 'No annotations yet. Select text to add your first annotation.'}
+                        {searchTerm || annotationFilter !== 'all'
+            ? '没有符合搜索条件的注释。'
+            : '还没有注释。选择文本以添加您的第一个注释。'}
                       </p>
                     </div>
                   )}
@@ -1122,8 +1122,8 @@ Wrap up your findings..."
                     <MessageSquare className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-neutral-900">Add Annotation</h3>
-                    <p className="text-sm text-neutral-600">Add a note or comment to the selected text</p>
+                    <h3 className="text-lg font-semibold text-neutral-900">添加注释</h3>
+                    <p className="text-sm text-neutral-600">为选中的文本添加注释或评论</p>
                   </div>
                 </div>
                 <button
@@ -1184,7 +1184,7 @@ Wrap up your findings..."
                   }}
                   className="btn-secondary"
                 >
-                  Cancel
+                  取消
                 </button>
                 <button
                   onClick={addAnnotation}
@@ -1192,7 +1192,7 @@ Wrap up your findings..."
                   className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <MessageSquare className="w-4 h-4 mr-2" />
-                  Add Annotation
+                  添加注释
                 </button>
               </div>
             </div>

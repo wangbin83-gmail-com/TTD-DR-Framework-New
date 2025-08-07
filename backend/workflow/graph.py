@@ -56,9 +56,9 @@ class WorkflowNode:
         self.error: Optional[Exception] = None
         self.execution_log: List[str] = []
     
-    def execute(self, state: TTDRState) -> TTDRState:
+    async def execute(self, state: TTDRState) -> TTDRState:
         """
-        Execute the node function with the given state
+        Execute the node function with the given state, supporting both sync and async functions.
         
         Args:
             state: Current workflow state
@@ -76,8 +76,11 @@ class WorkflowNode:
             
             logger.info(f"Executing node: {self.name}")
             
-            # Execute the node function
-            updated_state = self.func(state)
+            # Execute the node function (sync or async)
+            if asyncio.iscoroutinefunction(self.func):
+                updated_state = await self.func(state)
+            else:
+                updated_state = self.func(state)
             
             self.end_time = datetime.now()
             execution_time = (self.end_time - self.start_time).total_seconds()
@@ -320,7 +323,7 @@ class CompiledGraph:
         self.graph = graph
         self.execution_id: Optional[str] = None
         
-    def invoke(self, initial_state: TTDRState, config: Optional[Dict[str, Any]] = None) -> TTDRState:
+    async def invoke(self, initial_state: TTDRState, config: Optional[Dict[str, Any]] = None) -> TTDRState:
         """
         Execute the workflow with the given initial state
         
@@ -351,7 +354,7 @@ class CompiledGraph:
                 execution_path.append(current_node)
                 
                 logger.info(f"Executing node: {current_node}")
-                current_state = node.execute(current_state)
+                current_state = await node.execute(current_state)
                 
                 # Find next node
                 next_node = self._get_next_node(current_node, current_state)
@@ -367,7 +370,7 @@ class CompiledGraph:
                 node = self.graph.nodes[current_node]
                 execution_path.append(current_node)
                 logger.info(f"Executing final node: {current_node}")
-                current_state = node.execute(current_state)
+                current_state = await node.execute(current_state)
             
             # Record execution history
             self.graph.execution_history.append({

@@ -206,8 +206,8 @@ export const ResearchWorkflowApp: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 md:h-20">
             <div className="flex items-center space-x-2 md:space-x-4 min-w-0 flex-1">
-              <h1 className="text-lg md:text-xl font-bold text-gray-900 truncate">TTD-DR Framework</h1>
-              <span className="hidden sm:inline text-xs md:text-sm text-gray-500 truncate">Test-Time Diffusion Deep Researcher</span>
+              <h1 className="text-lg md:text-xl font-bold text-gray-900 truncate">TTD-DR 框架</h1>
+              <span className="hidden sm:inline text-xs md:text-sm text-gray-500 truncate">测试时扩散深度研究者</span>
             </div>
 
             <div className="flex items-center space-x-2 md:space-x-4">
@@ -216,7 +216,7 @@ export const ResearchWorkflowApp: React.FC = () => {
                 <div className="hidden sm:flex items-center space-x-2">
                   <div className={`w-2 h-2 rounded-full ${wsConnected ? 'bg-green-500' : 'bg-red-500'}`} />
                   <span className="text-xs md:text-sm text-gray-600">
-                    {wsConnected ? 'Connected' : 'Disconnected'}
+                    {wsConnected ? '已连接' : '已断开'}
                   </span>
                 </div>
               )}
@@ -228,7 +228,7 @@ export const ResearchWorkflowApp: React.FC = () => {
                   className="btn-secondary space-x-1 md:space-x-2 text-sm px-2 md:px-4 py-2"
                 >
                   <Home className="w-4 h-4" />
-                  <span className="hidden sm:inline">New Research</span>
+                  <span className="hidden sm:inline">新研究</span>
                 </button>
 
                 {workflowId && status.status === 'running' && (
@@ -241,7 +241,7 @@ export const ResearchWorkflowApp: React.FC = () => {
                     }`}
                   >
                     <RefreshCw className="w-4 h-4" />
-                    <span className="hidden sm:inline">Dashboard</span>
+                    <span className="hidden sm:inline">仪表板</span>
                   </button>
                 )}
 
@@ -255,7 +255,7 @@ export const ResearchWorkflowApp: React.FC = () => {
                     }`}
                   >
                     <FileText className="w-4 h-4" />
-                    <span className="hidden sm:inline">Report</span>
+                    <span className="hidden sm:inline">报告</span>
                   </button>
                 )}
               </nav>
@@ -281,13 +281,13 @@ export const ResearchWorkflowApp: React.FC = () => {
                   <WifiOff className="w-4 h-4 text-warning-600" />
                 )}
                 <span className="text-sm font-medium">
-                  {wsConnected ? 'Real-time updates active' : 'Connection interrupted'}
-                </span>
+                    {wsConnected ? '实时更新已激活' : '连接中断'}
+                  </span>
               </div>
               {!wsConnected && (
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-warning-500 rounded-full animate-pulse" />
-                  <span className="text-xs">Reconnecting...</span>
+                  <span className="text-xs">重新连接中...</span>
                 </div>
               )}
             </div>
@@ -344,12 +344,12 @@ export const ResearchWorkflowApp: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
             <p className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
-              © 2024 TTD-DR Framework. Powered by Kimi K2 and Google Search API.
+              © 2024 TTD-DR 框架。由Kimi K2和Google搜索API驱动。
             </p>
             <div className="flex space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500">
-              <span>Version 1.0.0</span>
+              <span>版本 1.0.0</span>
               {workflowId && (
-                <span className="hidden sm:inline">Workflow: {workflowId.substring(0, 8)}...</span>
+                <span className="hidden sm:inline">工作流: {workflowId.substring(0, 8)}...</span>
               )}
             </div>
           </div>

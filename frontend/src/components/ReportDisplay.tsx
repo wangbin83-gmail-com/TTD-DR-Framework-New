@@ -72,8 +72,8 @@ export const ReportDisplay: React.FC<ReportDisplayProps> = ({ report, topic, wor
 
       pdf.save(`${topic.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_report.pdf`);
     } catch (error) {
-      console.error('Error exporting to PDF:', error);
-      alert('Error exporting to PDF. Please try again.');
+      console.error('导出PDF时出错:', error);
+      alert('导出PDF时出错。请重试。');
     } finally {
       setIsExporting(false);
     }
@@ -130,10 +130,10 @@ export const ReportDisplay: React.FC<ReportDisplayProps> = ({ report, topic, wor
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(report);
-      alert('Report copied to clipboard!');
+      alert('报告已复制到剪贴板!');
     } catch (error) {
       console.error('Error copying to clipboard:', error);
-      alert('Error copying to clipboard. Please try again.');
+      alert('复制到剪贴板时出错。请重试。');
     }
   };
 
@@ -141,7 +141,7 @@ export const ReportDisplay: React.FC<ReportDisplayProps> = ({ report, topic, wor
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `Research Report: ${topic}`,
+          title: `研究报告: ${topic}`,
           text: report.substring(0, 200) + '...',
           url: window.location.href
         });
@@ -159,27 +159,27 @@ export const ReportDisplay: React.FC<ReportDisplayProps> = ({ report, topic, wor
       <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 mb-6 border border-gray-200/80">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
           <div className="mb-4 md:mb-0">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Research Report</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">研究报告</h1>
             <p className="text-lg text-gray-600 mt-1">{topic}</p>
-            <p className="text-sm text-gray-500 mt-2">Workflow ID: <span className="font-mono bg-gray-100 px-2 py-1 rounded-md">{workflowId}</span></p>
+            <p className="text-sm text-gray-500 mt-2">工作流ID: <span className="font-mono bg-gray-100 px-2 py-1 rounded-md">{workflowId}</span></p>
           </div>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <button
               onClick={() => setShowRawMarkdown(!showRawMarkdown)}
               className="flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-150 ease-in-out"
-              title={showRawMarkdown ? 'Show formatted view' : 'Show raw markdown'}
+              title={showRawMarkdown ? '显示格式化视图' : '显示原始Markdown'}
             >
               {showRawMarkdown ? <Eye className="w-5 h-5 mr-2" /> : <EyeOff className="w-5 h-5 mr-2" />}
-              <span>{showRawMarkdown ? 'Formatted' : 'Raw Markdown'}</span>
+              <span>{showRawMarkdown ? '格式化' : '原始Markdown'}</span>
             </button>
             <button
               onClick={() => setUseAdvancedMode(true)}
               className="flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-150 ease-in-out"
-              title="Switch to advanced report management"
+              title="切换到高级报告管理"
             >
               <Settings className="w-5 h-5 mr-2" />
-              <span>Advanced Mode</span>
+              <span>高级模式</span>
             </button>
           </div>
         </div>
@@ -187,7 +187,7 @@ export const ReportDisplay: React.FC<ReportDisplayProps> = ({ report, topic, wor
         {/* Export Options */}
         <div className="mt-6 pt-4 border-t border-gray-200">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-sm font-medium text-gray-600">Export as:</span>
+            <span className="text-sm font-medium text-gray-600">导出为:</span>
             <button
               onClick={exportToPDF}
               disabled={isExporting}

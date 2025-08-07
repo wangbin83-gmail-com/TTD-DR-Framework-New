@@ -3,11 +3,7 @@ Workflow recovery and continuation strategies for TTD-DR framework.
 Implements error recovery and workflow continuation strategies for task 13.1.
 """
 
-print("DEBUG: Starting workflow_recovery.py execution")
-
 import logging
-print("DEBUG: logging imported")
-
 import json
 import time
 from typing import Dict, List, Optional, Any, Callable
@@ -17,27 +13,22 @@ from dataclasses import dataclass, field
 from pathlib import Path
 import uuid
 
-print("DEBUG: Basic imports completed")
-
-try:
-    from models.core import TTDRState
-    print("DEBUG: TTDRState imported successfully")
-except Exception as e:
-    print(f"DEBUG: TTDRState import failed: {e}")
-    raise
-
-try:
-    from services.error_handling import (
-        ErrorHandlingFramework, TTDRError, WorkflowError, ErrorSeverity, 
-        ErrorCategory, RecoveryStrategy, ErrorContext
-    )
-    print("DEBUG: error_handling imports successful")
-except Exception as e:
-    print(f"DEBUG: error_handling import failed: {e}")
-    raise
+from models.core import TTDRState
+from services.error_handling import (
+    ErrorHandlingFramework, TTDRError, WorkflowError, ErrorSeverity, 
+    ErrorCategory, RecoveryStrategy, ErrorContext
+)
 
 logger = logging.getLogger(__name__)
-print("DEBUG: Logger created")
+
+def initialize_recovery_manager():
+    """Initializes and prints debug messages."""
+    print("DEBUG: Starting workflow_recovery.py execution")
+    print("DEBUG: logging imported")
+    print("DEBUG: Basic imports completed")
+    print("DEBUG: TTDRState imported successfully")
+    print("DEBUG: error_handling imports successful")
+    print("DEBUG: Logger created")
 
 class WorkflowState(str, Enum):
     """Workflow execution states"""

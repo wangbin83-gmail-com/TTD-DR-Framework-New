@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     # Kimi K2 API Configuration
     kimi_k2_api_key: Optional[str] = ""
     kimi_k2_base_url: str = "https://api.moonshot.cn/v1"
-    kimi_k2_model: str = "k1-6-20241203"
+    kimi_k2_model: str = "kimi-k2-0711-preview"
     kimi_k2_max_tokens: int = 4000
     kimi_k2_temperature: float = 0.7
     

@@ -29,44 +29,44 @@ export const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({
   const [nodes, setNodes] = useState<WorkflowNode[]>([
     {
       id: 'draft_generator',
-      name: 'Draft Generation',
-      description: 'Creating initial research structure and skeleton',
+      name: '草稿生成',
+      description: '创建初步的研究结构和框架',
       status: 'pending'
     },
     {
       id: 'gap_analyzer',
-      name: 'Gap Analysis',
-      description: 'Identifying information gaps in the draft',
+      name: '差距分析',
+      description: '识别草稿中的信息缺口',
       status: 'pending'
     },
     {
       id: 'retrieval_engine',
-      name: 'Information Retrieval',
-      description: 'Searching for relevant information from external sources',
+      name: '信息检索',
+      description: '从外部来源搜索相关信息',
       status: 'pending'
     },
     {
       id: 'information_integrator',
-      name: 'Information Integration',
-      description: 'Incorporating retrieved information into the draft',
+      name: '信息整合',
+      description: '将检索到的信息整合到草稿中',
       status: 'pending'
     },
     {
       id: 'quality_assessor',
-      name: 'Quality Assessment',
-      description: 'Evaluating draft quality and completeness',
+      name: '质量评估',
+      description: '评估草稿质量和完整性',
       status: 'pending'
     },
     {
       id: 'self_evolution_enhancer',
-      name: 'Self-Evolution',
-      description: 'Applying learning algorithms to improve components',
+      name: '自我进化',
+      description: '应用学习算法改进组件',
       status: 'pending'
     },
     {
       id: 'report_synthesizer',
-      name: 'Report Synthesis',
-      description: 'Generating final polished research report',
+      name: '报告综合',
+      description: '生成最终完善的研究报告',
       status: 'pending'
     }
   ]);
@@ -129,7 +129,7 @@ export const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({
                 className="flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-150 ease-in-out"
               >
                 <Pause className="w-5 h-5 mr-2" />
-                <span>Stop</span>
+                <span>停止</span>
               </button>
             )}
             {(status.status === 'completed' || status.status === 'error') && (
@@ -138,7 +138,7 @@ export const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({
                 className="flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-150 ease-in-out"
               >
                 <RotateCcw className="w-5 h-5 mr-2" />
-                <span>Restart</span>
+                <span>重新开始</span>
               </button>
             )}
           </div>
@@ -199,7 +199,7 @@ export const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Workflow Steps */}
             <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-gray-700/80">
-              <h2 className="text-xl font-semibold text-gray-100 mb-4">Workflow Steps</h2>
+              <h2 className="text-xl font-semibold text-gray-100 mb-4">工作流步骤</h2>
               <div className="space-y-4">
                 {nodes.map((node, index) => (
                   <div
@@ -225,10 +225,10 @@ export const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({
 
             {/* Current Status Details */}
             <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-gray-700/80">
-              <h2 className="text-xl font-semibold text-gray-100 mb-4">Current Status</h2>
+              <h2 className="text-xl font-semibold text-gray-100 mb-4">当前状态</h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-300">Current Node</h3>
+                  <h3 className="text-sm font-medium text-gray-300">当前节点</h3>
                   <p className="text-sm text-gray-100 mt-1">
                     {status.current_node ? nodes.find(n => n.id === status.current_node)?.name : 'Initializing...'}
                   </p>
@@ -237,19 +237,19 @@ export const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({
                 {state && (
                   <>
                     <div>
-                      <h3 className="text-sm font-medium text-gray-300">Iteration</h3>
+                      <h3 className="text-sm font-medium text-gray-300">迭代</h3>
                       <p className="text-sm text-gray-100 mt-1">{state.iteration_count} / {state.requirements.max_iterations}</p>
                     </div>
                     
                     <div>
-                      <h3 className="text-sm font-medium text-gray-300">Quality Score</h3>
+                      <h3 className="text-sm font-medium text-gray-300">质量评分</h3>
                       <p className="text-sm text-gray-100 mt-1">
                         {state.quality_metrics ? `${Math.round(state.quality_metrics.overall_score * 100)}%` : 'Calculating...'}
                       </p>
                     </div>
                     
                     <div>
-                      <h3 className="text-sm font-medium text-gray-300">Sources Used</h3>
+                      <h3 className="text-sm font-medium text-gray-300">使用来源</h3>
                       <p className="text-sm text-gray-100 mt-1">{state.retrieved_info?.length || 0}</p>
                     </div>
                   </>
@@ -261,7 +261,7 @@ export const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({
 
         {activeTab === 'visualization' && (
           <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-gray-700/80">
-            <h2 className="text-xl font-semibold text-gray-100 mb-4">Workflow Visualization</h2>
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">工作流可视化</h2>
             <WorkflowVisualization 
               workflowId={workflowId}
               status={status}

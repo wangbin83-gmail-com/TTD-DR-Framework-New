@@ -198,6 +198,24 @@ class KimiK2Client:
                     raise KimiK2Error("Connection timeout", None, "connection_timeout")
                     
             except httpx.ReadTimeout:
+                # Read timeout - retry with exponential backoff
+                if attempt < retries - 1:
+                    wait_time = min(30, 2 ** attempt)
+                    logger.warning(f"Kimi K2 read timeout, retrying in {wait_time} seconds (attempt {attempt + 1}/{retries})")
+                    await asyncio.sleep(wait_time)
+                    continue
+                else:
+                    raise KimiK2Error("Read timeout", None, "read_timeout")
+                    
+            except httpx.ConnectError as e:
+                # Connection error (including DNS failures) - retry with exponential backoff
+                if attempt < retries - 1:
+                    wait_time = min(30, 2 ** attempt)
+                    logger.warning(f"Kimi K2 network error ({e}), retrying in {wait_time} seconds (attempt {attempt + 1}/{retries})")
+                    await asyncio.sleep(wait_time)
+                    continue
+                else:
+                    raise KimiK2Error("Network connection error", None, "connection_error")
                 # Read timeout - this is common for long text generation
                 if attempt < retries - 1:
                     wait_time = min(30, (2 ** attempt) * 3)  # Longer delay for read timeouts
